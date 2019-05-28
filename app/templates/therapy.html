@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Page Title -->
+    <title>Therapy</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/animate-3.7.0.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="assets/fonts/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-4.1.3.min.css">
+    <link rel="stylesheet" href="assets/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+    <!-- Preloader Starts -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+    <!-- Preloader End -->
+
+
+    <!-- Header Area Starts -->
+    <header class="header-area blog-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="logo-area">
+                        <a href="/index"><img src="assets/images/logo.png" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="custom-navbar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="main-menu">
+                        <ul>
+                            <li class="active"><a href="/index">home</a></li>
+                            <li><a href="/introduction">introduction</a></li>
+                            <li><a href="/test">test</a></li>
+                            <li><a href="#">videos</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/fun-clips">fun-clips</a></li>
+                                    <li><a href="/sad-scenes">sad-scenes</a></li>
+                                </ul>
+                            </li>
+                            {% if current_user.is_anonymous %}
+                            <li class="menu-btn">
+                                <a href="/login" class="login">log in</a>
+                                <a href="/register" class="template-btn">sign up</a>
+                            </li>
+                            {% else %}
+                            <li class="menu-btn">
+                                <a href="/profile" class="template-btn">profile</a>
+                                <a href="/logout" class="logout">log out</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+    <section class="newsletter-area section-padding">
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-md-1">
+                    <div class="section-top text-center">
+                        <h2><span id="state"></span></h2>
+                        <h2><span id="guide"></span></h2>
+                        <h2><i class="fa fa-stethoscope"></i></h2>
+                        <p><span id="text"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Area Starts -->
+    <footer class="footer-area">
+        <br>
+        <br>
+        <br>
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class = "video">
+                          <iframe id = "player" type="text/html" width="800" height="600"
+                          src="https://www.youtube.com/embed/0jNvJU52LvU"
+                          frameborder="0" allowfullscreen>
+                          </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+    </footer>
+    <!-- Footer Area End -->
+
+
+    <script type="text/javascript">
+        var state = parseInt({{ state }});
+        src = ["#", "https://www.youtube.com/embed/3I_Seu7YwpI", "https://www.youtube.com/embed/_GFAd2O_kg8", "https://www.youtube.com/embed/7XLd9zX6PqU", "https://www.youtube.com/embed/0jNvJU52LvU", "https://www.youtube.com/embed/cIxGUAnj46U"]
+        text = [""]
+        mood = ["", "Very Negative", "Negative", "Neutral", "Positive", "Very Positive"]
+        guide = ["", "You should go to hospital for professional treatment!", "", "", "", ""]
+        text.push("Don’t be scare and don’t hate yourself and the world when you have some strong negative emotion.  Sometimes the reason good things are not happening to you is because you are the good thing that needs to happen to other people. The best is yet to come and a turnover is just on its way. Einstein says that in the middle of difficulty lies opportunity. Life is not a waste as long as there is at least one person in the world who cares for you. So when things go wrong and you feel like giving up – remember you’ve got me. Smile, storms don’t last forever. ")
+        text.push("Always think about the positive things in your life. If you feel tired, just have a rest. You don’t always need a plan and you don’t always need to be read for a fight. Sometimes you just need to breathe, trust, let go and see what happens Cheer up. Although life may not be easy now, in the end it’s all worth it. Everything will get better in time. ")
+        text.push("It’s necessary to have a not-too-bad and not-too-good mood. It indicates you are clam, peaceful and ready for any challenges in your life. it also means you have great control of your emotion, which is a must for any winner. Two things define you. Your patience when you have nothing, and your attitude when you have everything. Maybe you can also try to cheer yourself up if you need more energy. Life is better when you’re laughing.")
+        text.push("The world is so lucky to have your smile. Your mood is beyond average people and you need to be proud of yourself. Maybe you still have some confusion and tears in the deep inside of your heart. But remember, someday, everything will make perfect sense. So for now, laugh at the confusion, smile through the tears, and keep reminding yourself that everything happens for a reason. ")
+        text.push("You are the good thing that needs to happen to other people. Your energy and enthusiasm are far beyond the average people. You are a special gift of the world. Let your smile change the world. But don’t let the world change your smile. You are perfect exactly as you are. There’s no need to change anything. All you need to change is the thought that you have to change.")
+
+        document.getElementById('state').innerHTML = mood[state];
+        document.getElementById('guide').innerHTML = guide[state];
+        document.getElementById('text').innerHTML = text[state];
+        document.getElementById('player').src = src[state];
+    </script>
+
+    <!-- Javascript -->
+    <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="assets/js/vendor/bootstrap-4.1.3.min.js"></script>
+    <script src="assets/js/vendor/wow.min.js"></script>
+    <script src="assets/js/vendor/owl-carousel.min.js"></script>
+    <script src="assets/js/vendor/jquery.nice-select.min.js"></script>
+    <script src="assets/js/vendor/ion.rangeSlider.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

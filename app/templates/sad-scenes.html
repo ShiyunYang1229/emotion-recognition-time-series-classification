@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Page Title -->
+    <title>Sad Scenes</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/animate-3.7.0.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="assets/fonts/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-4.1.3.min.css">
+    <link rel="stylesheet" href="assets/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script type="text/javascript">
+    function timedMsg()
+     {
+     var t=setTimeout("alert('ALERT!')")
+     }
+    </script>
+
+</head>
+<body>
+    <!-- Preloader Starts -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+    <!-- Preloader End -->
+
+
+    <!-- Header Area Starts -->
+    <header class="header-area blog-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="logo-area">
+                        <a href="/index"><img src="assets/images/logo.png" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="custom-navbar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="main-menu">
+                        <ul>
+                            <li class="active"><a href="/index">home</a></li>
+                            <li><a href="/introduction">introduction</a></li>
+                            <li><a href="/test">test</a></li>
+                            <li><a href="#">videos</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/fun-clips">fun-clips</a></li>
+                                    <li><a href="/sad-scenes">sad-scenes</a></li>
+                                </ul>
+                            </li>
+                            <!--redundant tags-->
+                            <!--<li><a href="contact-us.html">contact</a></li>-->
+                            <!--<li><a href="#">pages</a>-->
+                                <!--<ul class="sub-menu">-->
+                                    <!--<li><a href="job-search.html">Job Search</a></li>-->
+                                    <!--<li><a href="job-single.html">Job Single</a></li>-->
+                                    <!--<li><a href="pricing-plan.html">Pricing Plan</a></li>-->
+                                    <!--<li><a href="elements.html">Elements</a></li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
+                            {% if current_user.is_anonymous %}
+                            <li class="menu-btn">
+                                <a href="/login" class="login">log in</a>
+                                <a href="/register" class="template-btn">sign up</a>
+                            </li>
+                            {% else %}
+                            <li class="menu-btn">
+                                <a href="/profile" class="template-btn">profile</a>
+                                <a href="/logout" class="logout">log out</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+
+
+    <!-- Footer Area Starts -->
+    <footer class="footer-area section-padding">
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+
+                        <div class="text-center">
+                            <h3>Here are some sad scenes.</h3>
+                            <h3>May you find peace.</h3>
+                        </div>
+
+                        <div class = "video">
+                          <iframe id = "player" type="text/html" width="800" height="600"
+                          src="https://www.youtube.com/embed/wdpEG4vNh3g"
+                          frameborder="0" allowfullscreen>
+                          </iframe>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <br>
+                        <br>
+                        <br>
+                        <div class = "video">
+                          <iframe id = "player2" type="text/html" width="800" height="600"
+                          src="https://www.youtube.com/embed/cSkn3_3tDm0"
+                          frameborder="0" allowfullscreen>
+                          </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Area End -->
+
+
+    <!-- Javascript -->
+    <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="assets/js/vendor/bootstrap-4.1.3.min.js"></script>
+    <script src="assets/js/vendor/wow.min.js"></script>
+    <script src="assets/js/vendor/owl-carousel.min.js"></script>
+    <script src="assets/js/vendor/jquery.nice-select.min.js"></script>
+    <script src="assets/js/vendor/ion.rangeSlider.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

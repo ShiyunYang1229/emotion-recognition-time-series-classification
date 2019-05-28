@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="/assets/css/login-style.css" type="text/css">
+
+{% block content %}
+    <form action="" method="post">
+        <div class="login">
+            <div class="login-screen">
+                <div class="app-title">
+                    <h1>Register</h1>
+                </div>
+		<div class="login-form">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=64) }}<br>
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password2.label }}<br>
+            {{ form.password2(size=32) }}<br>
+            {% for error in form.password2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+        </div>
+                <p>Already Registered? <a href="{{ url_for('login') }}">Click to Login!</a></p>
+            </div>
+        </div>
+    </form>
+{% endblock %}
