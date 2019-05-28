@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Page Title -->
+    <title>Profile</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/animate-3.7.0.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="assets/fonts/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-4.1.3.min.css">
+    <link rel="stylesheet" href="assets/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <style>
+    body {
+      background: #000524;
+    }
+
+    #wrapper {
+      padding-top: 20px;
+      background: #000524;
+      border: 1px solid #000;
+      box-shadow: 0 22px 35px -16px rgba(0, 0, 0, 0.71);
+      max-width: 650px;
+      margin: 35px auto;
+    }
+
+    #chart-bar {
+      position: relative;
+      margin-top: -38px;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader Starts -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- Header Area Starts -->
+    <header class="header-area single-page">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="logo-area">
+                            <a href="/index"><img src="assets/images/logo-light.png" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="custom-navbar">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="main-menu main-menu-light">
+                            <ul>
+                                <li class="active"><a href="/index">home</a></li>
+                                <li><a href="/introduction">introduction</a></li>
+                                <li><a href="/test">test</a></li>
+                                <li><a href="#">videos</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/fun-clips">fun-clips</a></li>
+                                        <li><a href="/sad-scenes">sad-scenes</a></li>
+                                    </ul>
+                                </li>
+                                {% if current_user.is_anonymous %}
+                                <li class="menu-btn">
+                                    <a href="/login" class="login">log in</a>
+                                    <a href="/register" class="template-btn">sign up</a>
+                                </li>
+                                {% else %}
+                                <li class="menu-btn">
+                                    <a href="/profile" class="template-btn">profile</a>
+                                    <a href="/logout" class="logout">log out</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-title text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <h2>Brainwave History</h2>
+                        <p>As shown.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+    <script src="assets/js/apexcharts.js"></script>
+    <div id="wrapper">
+        <div class="page-title text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <p>Here is your brainwave test history plot.</p>
+                        <p>y-axis: mood rating, x-axis: test date</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <!--<div id="chart-area">-->
+
+      <!--</div>-->
+      <!--<div id="chart-bar">-->
+
+      <!--</div>-->
+
+        <div id="chart-line"></div>
+        <div id="pie"></div>
+
+
+
+    <script>
+    var stat = {{ res|tojson }};
+    var data = [];
+    var data_x = [];
+    var data_y = [];
+    var i = 0;
+    //while(i < stat["num"]) {
+      //i++;
+      //for (var val in stat["data"][i]) {
+        //var x = val;
+        //var y = stat["data"][i][val];
+        //data.push([x, y]);
+      //}
+      //i++;
+    //}
+
+    for (var val in stat["data"]) {
+
+        var x = stat["data"][val]["time"];
+        var y = stat["data"][val]["result"];
+        data.push([x, y]);
+        data_x.push(x);
+        data_y.push(y);
+        }
+
+
+    var options = {
+        	chart: {
+        	height: 460,
+            foreColor: "#ccc",
+              stacked: false,
+              zoom: {
+                type: 'x',
+                enabled: true
+              },
+              toolbar: {
+                autoSelected: 'zoom'
+              }
+            },
+                  colors: ["#00BAEC"],
+      stroke: {
+        width: 2
+      },
+      grid: {
+        borderColor: "#555",
+        yaxis: {
+          lines: {
+            show: false
+          }
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      fill: {
+        gradient: {
+          enabled: true,
+          opacityFrom: 0.55,
+          opacityTo: 0
+        }
+      },
+      markers: {
+        size: 5,
+        colors: ["#000524"],
+        strokeColor: "#00BAEC",
+        strokeWidth: 3
+      },
+      series: [
+        {
+          data: data
+        }
+      ],
+      tooltip: {
+        theme: "dark"
+      },
+      xaxis: {
+        type: "datetime"
+      },
+      yaxis: {
+        min: 0,
+        max: 100,
+        tickAmount: 5
+      }
+     };
+
+    var chart = new ApexCharts(document.querySelector("#chart-line"), options);
+    chart.render();
+
+
+    var pie_data = [{
+      values: stat['pie'],
+      labels: ['Very Negative', 'Negative', 'Neutral', 'Positive', 'Very Positve'],
+      type: 'pie'
+    }];
+
+    var pie_layout = {
+      height: 400,
+      width: 500,
+      paper_bgcolor:'rgba(0,0,0,0)',
+      plot_bgcolor: 'rgba(0,0,0,0)',
+      title: {
+      text: 'Historical Mood Pie Chart',
+          font: {
+            size: 28,
+            color: 'rgb(255,255,255)'
+          }
+      },
+
+      legend: {
+        font: {
+            size: 14,
+            color: 'rgb(255,255,255)'
+        }
+      }
+
+    };
+
+    Plotly.newPlot('pie', pie_data, pie_layout);
+
+    </script>
+
+    <div style="text-align:center;clear:both;">
+    </div>
+    </div>
+    <!-- Footer Area End -->
+
+    <!-- Javascript -->
+    <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="assets/js/vendor/bootstrap-4.1.3.min.js"></script>
+    <script src="assets/js/vendor/wow.min.js"></script>
+    <script src="assets/js/vendor/owl-carousel.min.js"></script>
+    <script src="assets/js/vendor/jquery.nice-select.min.js"></script>
+    <script src="assets/js/vendor/ion.rangeSlider.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

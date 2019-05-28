@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="/assets/css/login-style.css" type="text/css">
+
+{% block content %}
+	<form action="" method="post" novalidate>
+	<div class="login">
+	<div class="login-screen">
+	<div class="app-title">
+	<h1>Login</h1>
+	</div>
+		<div class="login-form">
+        {{ form.hidden_tag() }}
+			<p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+		</div>
+    <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+	</div>
+	</div>
+	</form>
+{% endblock %}
